@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <style>
+        table {
+            border: 1px solid black;
+            background-color: #1C1C1E;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: #FFBBBBBB;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+        }
+
+        input[type="text"] {
+            padding: 20px 30px;
+            background-color: #1C1C1E;
+            color: aliceblue;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üretken Akademi</title>
+</head>
+
+<body>
+    <div>
+        <table id="calculator">
+            <tr>
+                <td colspan="3">
+                    <input type="text" id="result">
+                </td>
+                <td><input type="button" onclick="clearResult()" value="C"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendToResult('1')" value="1"></td>
+                <td><input type="button" onclick="appendToResult('2')" value="2"></td>
+                <td><input type="button" onclick="appendToResult('3')" value="3"></td>
+                <td><input type="button" onclick="appendToResult('/')" value="/"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendToResult('4')" value="4"></td>
+                <td><input type="button" onclick="appendToResult('5')" value="5"></td>
+                <td><input type="button" onclick="appendToResult('6')" value="6"></td>
+                <td><input type="button" onclick="appendToResult('+')" value="+"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendToResult('7')" value="7"></td>
+                <td><input type="button" onclick="appendToResult('8')" value="8"></td>
+                <td><input type="button" onclick="appendToResult('9')" value="9"></td>
+                <td><input type="button" onclick="appendToResult('-')" value="-"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="appendToResult('.')" value="."></td>
+                <td><input type="button" onclick="appendToResult('0')" value="0"></td>
+                <td><input type="button" onclick="calculateResult()" value="="></td>
+                <td><input type="button" onclick="appendToResult('*')" value="*"></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script>
+        flag = false;
+        function appendToResult(value) {
+            if(flag)
+                document.getElementById('result').value = "";
+                this.flag = false;
+            document.getElementById('result').value += value;
+        }
+        function calculateResult() {
+            try {
+                document.getElementById('result').value = eval(document.getElementById('result').value) + " | Uretken Academy!";
+                this.flag = true;
+            } catch (error) {
+                document.getElementById('result').value = 'Hata';
+            }
+        }
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+    </script>
+</body>
+
+</html>
